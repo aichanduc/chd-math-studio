@@ -4,8 +4,10 @@ Ngày: 26/09/2026. Kiểm tra trên Windows, Node.js, Python 3.12, Typst Python 
 
 ## Đã kiểm tra
 
+- PDF Typst WebAssembly trong trình duyệt: đồ thị và bảng biến thiên đã tải thật, có chữ ký PDF-1.7 và EOF hợp lệ; không nhập token.
+
 - `npm test`: 21 kiểm thử đạt, 0 thất bại.
-- `npm run build`: thành công. JavaScript sản phẩm khoảng 416 KB trước gzip, khoảng 124 KB sau gzip.
+- `npm run build`: thành công. JavaScript chính khoảng 419 KB trước gzip, khoảng 125 KB sau gzip. Typst Worker tải WASM khoảng 28 MB theo nhu cầu.
 - Bộ mẫu: bậc ba, bảng bậc ba, bảng trùng phương, bảng phân thức, sơ đồ cây, phác họa từ bảng.
 - Biên dịch Typst native trên máy: mỗi mẫu xuất được PDF, PNG và SVG, tổng cộng 18 tệp; đã xem ảnh của bảng thường và bảng có tiệm cận để kiểm tra bố cục, dấu, mũi tên.
 - Trình duyệt: giao diện xuất hiện đúng; chuyển đồ thị/bảng/cây; nhập công thức sai thì hiện lỗi và chặn xuất; bảng phân thức có hai giới hạn khác nhau; bật tùy chỉnh và thêm giới hạn phải; chuyển light/dark; kiểm tra ở chiều rộng 390 px không bị tràn ngang.
@@ -15,10 +17,15 @@ Ngày: 26/09/2026. Kiểm tra trên Windows, Node.js, Python 3.12, Typst Python 
 - Cài thư viện cập nhật xong: npm báo 0 lỗ hổng tại thời điểm cài đặt.
 - Ảnh kiểm chứng: `preview-light.jpg`, `preview-dark.jpg` trong thư mục này.
 
-## Chưa thể xác minh ở giai đoạn này
+## Triển khai công khai ngày 26/09/2026
 
-- Chưa tạo repository, push, chạy workflow trên tài khoản GitHub, hoặc xuất bản URL công cộng — đúng theo yêu cầu để bước đó ở giai đoạn sau.
-- Chưa kiểm tra GitHub PAT/GitHub App thật, quyền repository, hàng đợi Actions, quota tài khoản, URL artifact thật hoặc một lần tải qua broker tới GitHub thật. Các bước đó cần repository và cấu hình hợp lệ.
+- Repository công khai: https://github.com/aichanduc/chd-math-studio.
+- Pages và CI đã chạy thành công: https://github.com/aichanduc/chd-math-studio/actions/runs/36250997143 và https://github.com/aichanduc/chd-math-studio/actions/runs/36250997205.
+- Website: https://aichanduc.github.io/chd-math-studio/.
+- Trên URL công khai: nhập `(2*x+1)/(x-1)`, chuyển Bảng biến thiên, tải PDF trực tiếp thành công; xác minh tệp tải thật.
+## Giới hạn kiểm tra
+
+- Chưa kiểm tra chế độ người dùng nhập GitHub PAT/GitHub App thật, quyền repository, hàng đợi Actions, quota tài khoản, URL artifact thật hoặc một lần tải qua broker tới GitHub thật. Các bước đó cần repository và cấu hình hợp lệ.
 - Chưa chạy broker công cộng qua HTTPS/reverse proxy, kiểm thử tải đồng thời hoặc mô hình nhiều máy chủ.
 - Các kiểm thử không phải chứng minh đúng với mọi biểu thức hoặc mọi điều kiện số học. Phạm vi và giới hạn nêu trong README.
 
