@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "mode": "illustration",
+  "formula": "x",
+  "table": {
+    "points": [
+      {
+        "x": "−∞",
+        "y": "−∞",
+        "mark": ""
+      },
+      {
+        "x": "−1",
+        "y": "3",
+        "mark": "0"
+      },
+      {
+        "x": "1",
+        "y": "−1",
+        "mark": "0"
+      },
+      {
+        "x": "+∞",
+        "y": "+∞",
+        "mark": ""
+      }
+    ],
+    "signs": [
+      "+",
+      "−",
+      "+"
+    ]
+  },
+  "tree": "Phép thử\n  A | 0.6\n    B | 0.7\n    B̄ | 0.3\n  Ā | 0.4\n    B | 0.2\n    B̄ | 0.8",
+  "options": {
+    "xmin": -4,
+    "xmax": 4,
+    "ymin": -4,
+    "ymax": 6,
+    "color": "#2755df",
+    "title": "",
+    "showGrid": true,
+    "showPoints": true
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "math-typst-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build --base=./",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.mjs",
+    "samples": "node scripts/samples.mjs",
+    "server": "node --env-file-if-exists=.env server/index.mjs"
+  },
+  "dependencies": {
+    "@myriaddreamin/typst-ts-renderer": "^0.7.0",
+    "@myriaddreamin/typst-ts-web-compiler": "^0.7.0",
+    "@myriaddreamin/typst.ts": "^0.7.0",
+    "lucide": "0.468.0",
+    "mathjs": "^15.2.0"
+  },
+  "devDependencies": {
+    "vite": "^8.3.1"
+  }
+}
