@@ -47,3 +47,15 @@ Một bảng chỉ mô tả các mốc, dấu đạo hàm, giới hạn và xu h
 - Dàn công thức nhãn nhiều tầng bằng Typst math; preset đề thi và cùng tỉ lệ trục.
 - GitHub App, hàng đợi và kho trạng thái bền vững để mở rộng biên dịch công cộng.
 - Xuất thêm CeTZ, nhiều hình trong một trang, preset phông/kích thước cho đề thi.
+
+
+## Bản 1.1 — 27/09/2026
+
+Đã đọc mẫu `code demo.txt` của Chân Đức. Mẫu dùng `bbt` nhưng thiếu định nghĩa hàm; bản xuất mới bổ sung hàm tự chứa, khai báo các hàng bằng tuple và nội dung math an toàn. Không thực thi trực tiếp mã nhập của người dùng.
+
+- Math mode và font OpenType Math: https://typst.app/docs/reference/math/
+- Grid và bố cục ô: https://typst.app/docs/reference/layout/grid/
+- Chọn place/box cho bảng để giữ tọa độ nhãn, hai giới hạn tại điểm ngắt và vùng sửa trên hình nhất quán.
+- MathJax SVG chỉ nhận TeX sinh từ AST đã kiểm tra; không nhận TeX/Typst tùy ý.
+- Đồ thị vẫn lấy mẫu và cắt gián đoạn trước khi đơn giản hóa từng đường riêng với sai số tối đa 0.2 đơn vị bản vẽ.
+- Kéo rê đổi miền tọa độ, không sửa công thức hay biến đổi ảnh xuất.

@@ -18,6 +18,13 @@ Một công thức. Những hình vẽ chỉn chu. Sẵn sàng cho bài giảng 
 
 ![Giao diện CHĐ Math Studio](docs/preview-light.jpg)
 
+## Mới trong bản 1.1
+
+- Chữ lớn, font hệ thống dễ đọc, header gọn để ưu tiên vùng vẽ.
+- Kéo rê đồ thị, cuộn thu/phóng theo con trỏ, phím mũi tên và nút ⌂ về khung ban đầu. Miền tọa độ mới được lưu và xuất đúng như đang xem.
+- Bấm trực tiếp các ô x, y′, y hoặc dấu khoảng trên bảng để sửa; dấu ⋮ cho phép ngắt dòng y và nhập giới hạn hai bên.
+- Phân số, căn, số mũ được dàn thành công thức vector. Mã bảng dùng hàm `bbt` tự chứa và dữ liệu theo hàng; mã đồ thị được rút gọn điểm thẳng hàng.
+
 ## Bắt đầu trong một phút
 
 1. [Mở website](https://aichanduc.github.io/chd-math-studio/), chọn **Đồ thị hàm số**, **Bảng biến thiên** hoặc **Sơ đồ cây**.
@@ -57,7 +64,7 @@ Một công thức. Những hình vẽ chỉn chu. Sẵn sàng cho bài giảng 
 | Mũ / logarit / căn | `exp(x)`, `ln(x)`, `sqrt(x)` |
 | Hằng số | `pi`, `e` |
 
-Trong bảng thủ công, nhãn tự do được hiển thị nguyên văn. Tệp dự án lưu trên máy, không tự động đồng bộ. Font giao diện có thể tải từ Google Fonts; không có analytics.
+Trong bảng thủ công, nhãn tự do được hiển thị nguyên văn. Tệp dự án lưu trên máy, không tự động đồng bộ. Font giao diện dùng font hệ thống; không có analytics.
 
 ## Chạy và phát triển trên máy
 
@@ -85,4 +92,6 @@ GitHub Actions kiểm thử và triển khai Pages mỗi khi cập nhật nhánh
 
 **Ý tưởng và thiết kế: Chân Đức.** Dự án được xây dựng để giáo viên Toán tạo hình rõ ràng, dễ chỉnh và dùng lại trong bài giảng.
 
-Sử dụng [Typst](https://typst.app/docs/), [typst.ts](https://github.com/Myriad-Dreamin/typst.ts), [mathjs](https://mathjs.org/), [Vite](https://vite.dev/), [Lucide](https://lucide.dev/) và font [Libertinus](https://github.com/alerque/libertinus). Font Libertinus đi kèm theo [SIL Open Font License](public/fonts/OFL.txt). Các thư viện giữ giấy phép riêng của tác giả.
+Sử dụng [Typst](https://typst.app/docs/), [typst.ts](https://github.com/Myriad-Dreamin/typst.ts), [mathjs](https://mathjs.org/), [Vite](https://vite.dev/), [Lucide](https://lucide.dev/) [MathJax](https://www.mathjax.org/), và font [Libertinus](https://github.com/alerque/libertinus). Font Libertinus đi kèm theo [SIL Open Font License](public/fonts/OFL.txt). Các thư viện giữ giấy phép riêng của tác giả.
+
+Font toán New Computer Modern đi kèm theo giấy phép GUST; xem `public/fonts/`.

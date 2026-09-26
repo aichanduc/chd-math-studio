@@ -44,3 +44,14 @@ python scripts/compile.py outputs/samples/quartic.typ
 python scripts/compile.py outputs/samples/tree.typ
 python scripts/compile.py outputs/samples/illustration.typ
 ```
+
+
+## Bản 1.1 — 27/09/2026
+
+- 27 kiểm thử: thêm phép đổi miền khi rê, thu/phóng quanh con trỏ, đơn giản hóa đường, công thức vector, ký hiệu khoa học và mã bảng tự chứa.
+- Sáu mẫu biên dịch native thành công ra PDF/PNG/SVG.
+- Trình duyệt bản build: kéo chuột thực tế thay đổi miền x/y đúng, giữ nguyên công thức; nút thu/phóng đổi miền; khôi phục trả về khung ban đầu.
+- Bấm ô y trực tiếp trên bảng, nhập sqrt(2)/2, áp dụng và tải PDF WebAssembly thành công.
+- Bố cục 390 px không tràn ngang.
+- npm audit sau bản vá phụ thuộc: 0 lỗ hổng tại thời điểm kiểm tra.
+- MathJax làm JavaScript chính tăng lên khoảng 2 MB (694 KB gzip); WASM Typst vẫn chỉ tải khi xuất PDF.

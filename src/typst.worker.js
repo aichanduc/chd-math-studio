@@ -6,7 +6,7 @@ let ready;
 async function getCompiler(fontUrl){
   if(!ready)ready=(async()=>{
     const compiler=createTypstCompiler();
-    await compiler.init({getModule:()=>compilerWasm,beforeBuild:[loadFonts([fontUrl],{assets:false})]});
+    await compiler.init({getModule:()=>compilerWasm,beforeBuild:[loadFonts([fontUrl,new URL('NewCMMath-Regular.otf',fontUrl).href],{assets:false})]});
     return compiler;
   })().catch(error=>{ready=null;throw error;});
   return ready;
