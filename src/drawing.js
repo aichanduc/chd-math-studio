@@ -70,6 +70,7 @@ export function graph(ex,table,options={},extra=[]){
     const x=xmin+(xmax-xmin)*i/count,y=ex.evaluate(x),py=Y(y);
     if(!Number.isFinite(y)||py<T||py>B){flush();continue;}
     if(points.length){const prev=points.at(-1),lastX=x-(xmax-xmin)/count,mid=Y(ex.evaluate((x+lastX)/2));if(Math.abs(py-prev[1])>100||!Number.isFinite(mid)||Math.abs(mid-(py+prev[1])/2)>12)flush();}
+    if(points.length&&ex.breaks?.some(v=>v>x-(xmax-xmin)/count&&v<=x))flush();
     points.push([X(x),py]);
   }flush();
   if(showPoints)for(const p of table?.points||[]){const x=numericLabel(p.x),y=ex.evaluate(x);if(p.mark==='0'&&x>xmin&&x<xmax&&y>ymin&&y<ymax){line(s,X(x),oy,X(x),Y(y),'#a6b7e9',1,true);dot(s,X(x),Y(y),4,color);text(s,X(x)+10,Y(y)-16,`(${fmt(x)}; ${fmt(y)})`,14,color,'start');}}
@@ -111,18 +112,32 @@ export function variation(t,{color='#2755df',title=''}={}){
 }
 export function illustration(t,opts){
   validateTable(t);const warnings=tableWarnings(t);if(warnings.length)throw new Error(warnings.join(' '));
-  const {xmin,xmax,ymin,ymax}=opts,xs=t.points.map(p=>numericLabel(p.x));
+  const xs=t.points.map(p=>numericLabel(p.x));
   const leftValues=t.points.map(p=>numericLabel(p.y)),rightValues=t.points.map(p=>numericLabel(rightValue(p)));
-  if([...leftValues,...rightValues].some(Number.isNaN))throw new Error('Phác họa cần y là số, biểu thức số hoặc ±∞. Nhãn tự do chỉ dùng trong bảng.');
-  const ex={source:'Đường cong minh họa từ bảng — không xác định duy nhất',evaluate(x){
+  const undefinedLabel=v=>String(v).trim()==='||';
+  if(t.points.some(p=>[p.y,rightValue(p)].some(v=>Number.isNaN(numericLabel(v))&&!undefinedLabel(v))))throw new Error('Phác họa cần y là số, biểu thức số, ±∞ hoặc ||.');
+  const finiteX=xs.filter(Number.isFinite),finiteY=[...leftValues,...rightValues].filter(Number.isFinite);
+  const scaleX=Math.max(1,(finiteX.at(-1)??1)-(finiteX[0]??0));
+  const low=Math.min(0,...finiteY),high=Math.max(1,...finiteY),scaleY=Math.max(1,high-low);
+  const split=i=>t.points[i].mark==='||'||t.points[i].split||undefinedLabel(t.points[i].y);
+  // Shape anchors depend only on the table, so panning/zooming never morphs it.
+  const ex={source:'Đường cong minh họa từ bảng',breaks:xs.filter((x,i)=>Number.isFinite(x)&&(split(i)||t.signs[i]==='||'||t.signs[i-1]==='||')),evaluate(x){
+    const exact=xs.indexOf(x);if(exact>=0)return split(exact)?NaN:leftValues[exact];
     const i=xs.findIndex((v,j)=>j<xs.length-1&&x>v&&x<xs[j+1]);if(i<0||t.signs[i]==='||')return NaN;
-    const a=Number.isFinite(xs[i])?xs[i]:xmin,b=Number.isFinite(xs[i+1])?xs[i+1]:xmax;
-    const rawA=rightValues[i],rawB=leftValues[i+1];
+    const a=xs[i],b=xs[i+1],rawA=rightValues[i],rawB=leftValues[i+1];
     if(Number.isNaN(rawA)||Number.isNaN(rawB))return NaN;
-    const av=Number.isFinite(rawA)?rawA:rawA>0?ymax:ymin,bv=Number.isFinite(rawB)?rawB:rawB>0?ymax:ymin;
-    const u=Math.max(0,Math.min(1,(x-a)/(b-a)));return av+(bv-av)*(3*u*u-2*u*u*u);
+    const u=!Number.isFinite(a)&&!Number.isFinite(b)?.5+Math.atan(x/scaleX)/Math.PI:!Number.isFinite(a)?scaleX/(b-x+scaleX):!Number.isFinite(b)?(x-a)/(x-a+scaleX):(x-a)/(b-a);
+    if(!Number.isFinite(rawA)&&!Number.isFinite(rawB))return Math.sign(rawB)*scaleY*Math.log(u/(1-u));
+    if(!Number.isFinite(rawA))return rawB+Math.sign(rawA)*scaleY*(1-u)*(1-u)/u;
+    if(!Number.isFinite(rawB))return rawA+Math.sign(rawB)*scaleY*u*u/(1-u);
+    return rawA+(rawB-rawA)*(3*u*u-2*u*u*u);
   }};
-  return graph(ex,null,{...opts,title:'Phác họa minh họa từ bảng biến thiên'});
+  const s=graph(ex,null,{...opts,title:'Phác họa minh họa từ bảng biến thiên'});
+  s.illustrationEvaluate=ex.evaluate;
+  xs.forEach((x,i)=>{if(!split(i)||!Number.isFinite(x))return;
+    for(const y of new Set([leftValues[i],rightValues[i]]))if(Number.isFinite(y)&&x>=opts.xmin&&x<=opts.xmax&&y>=opts.ymin&&y<=opts.ymax)dot(s,s.plot.left+(x-opts.xmin)*s.plot.unit,s.plot.top+(opts.ymax-y)*s.plot.unit,5,opts.color,true);
+  });
+  return s;
 }
 export function parseTree(source){
   const lines=source.split('\n').filter(x=>x.trim());if(!lines.length||lines.length>31)throw new Error('Sơ đồ cần 1–31 nút.');

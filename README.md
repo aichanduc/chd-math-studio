@@ -18,7 +18,14 @@ Một công thức. Những hình vẽ chỉn chu. Sẵn sàng cho bài giảng 
 
 ![Giao diện CHĐ Math Studio](docs/preview-light.jpg)
 
-## Mới trong bản 1.3
+## Mới trong bản 1.4
+
+- **Giao điểm đường biên:** bật “Hiển thị tọa độ giao điểm” trong tab miền nghiệm để thấy chấm và tọa độ của các đường đang bật. Bao gồm giao điểm ngoài miền nghiệm; đường song song/trùng nhau không tạo giao điểm đơn. Chỉ hiển thị điểm trong khung đang xem; tọa độ thập phân được làm tròn.
+- **Phác họa:** tách nhánh ở mốc `||`, vẽ vòng tròn rỗng khi giới hạn hữu hạn; không nối qua khoảng không xác định. Hỗ trợ rê, cuộn và các nút zoom, giữ hình dạng đường minh họa khi đổi khung nhìn. Ô y ghi `||` mà không có giá trị giới hạn sẽ không đủ dữ liệu dựng nhánh sát ô đó.
+- **PNG 3× mặc định** ở bộ chọn tải xuống; vẫn có PDF, SVG và mã Typst.
+- Giao diện sáng/tối có bảng màu riêng cho từng tab, nền chuyển sắc nhẹ và nút nhấn tím xanh.
+
+## Các tính năng từ bản 1.3
 
 - **Miền nghiệm hệ BPT**: nhập từ 1 đến 8 bất phương trình bậc nhất hai ẩn, chọn màu và bật/tắt từng dòng. Vùng trắng là miền nghiệm chung; **Reverse** chuyển sang gạch miền chung. Đường biên `<`, `>` dùng nét đứt; `≤`, `≥` dùng nét liền.
 - **Kích thước khung**: kéo thanh trượt để xem nhỏ gọn hoặc rộng hơn; bấm **Vừa màn hình** để trở về mức mặc định. Việc này không đổi miền tọa độ, tỉ lệ đơn vị hay tệp xuất.

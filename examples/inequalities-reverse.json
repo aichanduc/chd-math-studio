@@ -27,6 +27,7 @@
     "color": "#2755df",
     "title": "",
     "showGrid": true,
-    "showPoints": true
+    "showPoints": true,
+    "showIntersections": true
   }
 }

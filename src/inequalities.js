@@ -1,6 +1,7 @@
 import { mathLabel } from './math-typeset.js';
 import { graph } from './drawing.js';
-import { parseInequality, clipSegment, rectanglePlanes } from './inequality-math.js';
+import { parseInequality, clipSegment, rectanglePlanes, lineIntersections } from './inequality-math.js';
+import { fmt } from './math.js';
 
 export const initialInequalities = () => [
   { formula: 'x >= 0', color: '#2755df', enabled: true },
@@ -47,6 +48,18 @@ export function inequalityScene(rows, options, reverse = false) {
     addLine(boundaries, clipSegment([center[0] - p.b * span, center[1] + p.a * span], [center[0] + p.b * span, center[1] - p.a * span], bounds), active[i].color, 2, active[i].strict);
   });
   s.items = [...hatches, ...s.items, ...boundaries];
+  s.intersections = options.showIntersections ? lineIntersections(active).filter(p => p.x >= options.xmin && p.x <= options.xmax && p.y >= options.ymin && p.y <= options.ymax) : [];
+  const labels = [];
+  for (const p of s.intersections) {
+    const x = L + (p.x - options.xmin) * unit, y = T + (options.ymax - p.y) * unit;
+    const label = `(${fmt(p.x)}; ${fmt(p.y)})`, w = Math.min(s.width - 12, label.length * 7.5 + 12), h = 22;
+    const candidates = [[x+9,y-28],[x+9,y+9],[x-w-9,y-28],[x-w-9,y+9]].map(([a,b])=>[Math.max(5,Math.min(s.width-w-5,a)),Math.max(5,Math.min(B+12,b))]);
+    const [lx,ly] = candidates.find(([a,b])=>!labels.some(r=>a<r.x+r.w&&a+w>r.x&&b<r.y+h&&b+h>r.y)) || candidates[0];
+    labels.push({x:lx,y:ly,w,h});
+    s.items.push({type:'circle',x,y,r:4.5,color:'#6d28d9',open:false});
+    s.items.push({type:'rect',x:lx,y:ly,w,h,fill:'#ffffff',stroke:'#e4dcf8'});
+    s.items.push({type:'text',x:lx+6,y:ly+h/2,label,size:13,color:'#4c1d95',anchor:'start'});
+  }
   const note = active.length ? (reverse ? 'Vùng gạch: miền nghiệm chung' : 'Vùng trắng: miền nghiệm chung') : (reverse ? 'Không bật BPT: toàn bộ mặt phẳng được gạch' : 'Không bật BPT: toàn bộ mặt phẳng là nghiệm');
   s.items.push({ type: 'text', x: s.width / 2, y: B + 48, label: note, size: 15, color: '#24334b', anchor: 'middle' });
   active.forEach((p, i) => {

@@ -69,3 +69,10 @@ python scripts/compile.py outputs/samples/illustration.typ
 - 38 kiểm thử đạt, gồm phân tích bất phương trình affine, loại biểu thức phi tuyến, cắt đoạn theo nửa mặt phẳng, kiểm tra vị trí mọi nét gạch thường/Reverse, biên nghiêm ngặt, dòng bị tắt, miền rỗng và tiêu đề trống ở cả hai kiểu bảng.
 - Bổ sung 2 mẫu hệ BPT vào quy trình CI (tổng 8 mẫu). Mẫu thường và Reverse biên dịch cục bộ thành PDF, PNG, SVG bằng Typst 0.14.2; PDF Reverse cũng đã biên dịch thành công trên trình duyệt.
 - Kiểm tra giao diện: thêm/xóa/bật/tắt BPT, báo lỗi phi tuyến, thanh kích thước giữ nguyên miền tọa độ; nhập/xóa tiêu đề cập nhật ngay trong tab bảng tùy chỉnh.
+
+
+## Bản 1.4 — 27/09/2026
+
+- 42 kiểm thử đạt, thêm giao điểm song song/trùng/đồng quy, giao điểm ngoài miền chung, trạng thái bật/tắt, xuất nhãn và chấm, tách nhánh ở bước nhảy nhỏ nằm giữa các điểm lấy mẫu, và tính bất biến hình phác họa khi đổi miền tọa độ.
+- 9 mẫu biên dịch trong CI; thêm illustration-split và bật giao điểm trong hai mẫu hệ BPT. Cục bộ đã biên dịch mẫu giao điểm và ngắt nhánh thành PDF/SVG/PNG bằng Typst.
+- Trình duyệt: Phác họa với mốc || cho hai đường riêng và vòng tròn rỗng; nút zoom đổi miền từ [-4,4] sang [-3.2,3.2]; mặc định bộ chọn là PNG. Kiểm tra màu sáng/tối và bật giao điểm trực tiếp.

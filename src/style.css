@@ -33,3 +33,22 @@ main{padding:16px 24px 0;max-width:1900px}.page-heading{margin-bottom:10px}.page
 .preview-sizing{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin:0 0 14px;font-size:12px;color:var(--muted)}
 .preview-sizing input{width:130px;padding:0;accent-color:var(--blue)}.preview-sizing output{min-width:34px}.preview-sizing .text-button{font-size:12px;padding:3px 8px}
 .bpt-typeset{grid-column:1/-1;overflow:auto;color:var(--ink);padding:2px 0}.bpt-typeset svg{max-width:100%;height:auto}#reverse-region[aria-pressed="true"]{border-color:var(--blue);background:var(--soft);color:var(--blue)}
+
+/* A colorful classroom workspace; exported figures keep their white background. */
+:root{--bg:#f5f3ff;--surface:#f2f4ff;--muted:#63708b;--line:#dde3f5;--soft:#eaefff;--shadow:0 8px 28px #4347a810}
+body{background:radial-gradient(ellipse at 95% 0%,#dff5f180,transparent 45%),radial-gradient(ellipse at 10% 45%,#ede1ff70,transparent 48%),var(--bg)}
+.topbar{background:linear-gradient(105deg,#eef1ff,#fbfaff 52%,#e8faf6);border-bottom-color:#d8dcf4}
+.wordmark{color:#4232a5}.wordmark>span:first-child{color:#596588}.brand-mark,.primary{background:linear-gradient(120deg,#4059e9,#7947db);box-shadow:0 5px 14px #6549dc26}.primary:hover{background:linear-gradient(120deg,#304bd8,#6936cb)}
+h1{color:#37308d}h1>span{color:#e87549}.page-heading{border-left:4px solid #9c79ed;padding-left:14px}
+.mode-tabs{gap:5px;padding:5px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.mode-tabs>button{border-radius:8px;--tab-accent:#4056cc;--tab-fill:#edf0ff}.mode-tabs>button[data-mode=variation]{--tab-accent:#087b72;--tab-fill:#e1f5ef}.mode-tabs>button[data-mode=custom]{--tab-accent:#8b35a7;--tab-fill:#f5e9fb}.mode-tabs>button[data-mode=inequalities]{--tab-accent:#bd5121;--tab-fill:#fff0e4}.mode-tabs>button[data-mode=tree]{--tab-accent:#146f9a;--tab-fill:#e5f5fc}
+.mode-tabs>button svg{color:var(--tab-accent)}.mode-tabs>button.selected,.mode-tabs>button:hover{background:var(--tab-fill);color:var(--tab-accent)}.mode-tabs>button.selected:after{background:var(--tab-accent);left:15px;right:15px;bottom:2px;border-radius:3px}
+.panel-heading{padding-bottom:12px;border-bottom:1px solid var(--line)}.section-number{background:#e9e3ff;color:#6340b5}.analysis-card{background:linear-gradient(120deg,#edf1ff,#eaf9f3);border:1px solid #dce9f1}.result-toolbar{background:linear-gradient(100deg,#f1edff,#eef9fa)}
+.canvas-area{background-color:#eff1fb;background-image:radial-gradient(#a7aad62e .8px,transparent .8px),linear-gradient(135deg,#f0edff,#edf8f7);background-size:12px 12px,100% 100%}
+.preview-sizing{background:#ffffffb3;border:1px solid #dee3f3;border-radius:9px;padding:7px}.export-bar{background:linear-gradient(110deg,#f5f2ff,#effaf6)}.curve-row{border-left:3px solid #d3c9f2;padding-left:10px}
+:root[data-theme=dark]{--bg:#121827;--panel:#1a2336;--surface:#222e45;--muted:#b0bdd4;--line:#33425f;--soft:#2b3857;--shadow:0 8px 28px #0003}
+[data-theme=dark] body{background:radial-gradient(ellipse at top right,#183e483d,transparent 50%),var(--bg)}
+[data-theme=dark] .topbar,[data-theme=dark] .result-toolbar{background:linear-gradient(110deg,#272544,#193340)}
+[data-theme=dark] .wordmark,[data-theme=dark] h1{color:#c7c0ff}[data-theme=dark] .wordmark>span:first-child{color:#b0bdd4}
+[data-theme=dark] .mode-tabs>button{--tab-fill:#2c365e;--tab-accent:#acbaff}[data-theme=dark] .mode-tabs>button[data-mode=variation]{--tab-fill:#163f3d;--tab-accent:#70dbc6}[data-theme=dark] .mode-tabs>button[data-mode=custom]{--tab-fill:#402b51;--tab-accent:#e5adf5}[data-theme=dark] .mode-tabs>button[data-mode=inequalities]{--tab-fill:#4b342d;--tab-accent:#ffb78b}[data-theme=dark] .mode-tabs>button[data-mode=tree]{--tab-fill:#213e53;--tab-accent:#8cdaff}
+[data-theme=dark] .analysis-card,[data-theme=dark] .export-bar{background:linear-gradient(120deg,#272a46,#1c393b);border-color:var(--line)}[data-theme=dark] .canvas-area{background-color:#192638;background-image:radial-gradient(#52688b40 .8px,transparent .8px),linear-gradient(135deg,#24253e,#173137)}[data-theme=dark] .preview-sizing{background:#182439cc;border-color:var(--line)}[data-theme=dark] .section-number{background:#39315c;color:#d5c3ff}

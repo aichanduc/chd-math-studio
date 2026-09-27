@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "mode": "illustration",
+  "table": {
+    "points": [
+      {
+        "x": "-2",
+        "y": "-1",
+        "mark": ""
+      },
+      {
+        "x": "0.123",
+        "y": "1",
+        "right": "1.1",
+        "mark": "||",
+        "split": true
+      },
+      {
+        "x": "2",
+        "y": "3",
+        "mark": ""
+      }
+    ],
+    "signs": [
+      "+",
+      "+"
+    ]
+  },
+  "options": {
+    "xmin": -4,
+    "xmax": 4,
+    "ymin": -4,
+    "ymax": 6,
+    "color": "#2755df",
+    "title": "",
+    "showGrid": true,
+    "showPoints": true
+  }
+}

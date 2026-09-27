@@ -16,7 +16,7 @@ for(const [name,mode,formula] of [['cubic','graph','x^3-3*x+1'],['variation','va
 }
 for(const reverse of [false,true]){
  const name=reverse?'inequalities-reverse':'inequalities';
- const p={version:1,mode:'inequalities',inequalities:initialInequalities(),reverse,options};
+ const p={version:1,mode:'inequalities',inequalities:initialInequalities(),reverse,options:{...options,showIntersections:true}};
  p.inequalities[2].formula='x + y < 4';
  const s=buildScene(p);
  await writeFile(`examples/${name}.json`,JSON.stringify(p,null,2));
@@ -24,4 +24,7 @@ for(const reverse of [false,true]){
  await writeFile(`outputs/samples/${name}.svg`,toSVG(s));
 }
 await writeFile('examples/bbt.typ',toTypst(buildScene({version:1,mode:'variation',table:initialTable(),options})));
-console.log('Eight sample projects and native Typst sources generated.');
+const split={version:1,mode:'illustration',table:{points:[{x:'-2',y:'-1',mark:''},{x:'0.123',y:'1',right:'1.1',mark:'||',split:true},{x:'2',y:'3',mark:''}],signs:['+','+']},options};
+await writeFile('examples/illustration-split.json',JSON.stringify(split,null,2));
+await writeFile('outputs/samples/illustration-split.typ',toTypst(buildScene(split)));
+console.log('Nine sample projects and native Typst sources generated.');

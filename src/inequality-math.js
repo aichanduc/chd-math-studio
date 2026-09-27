@@ -52,3 +52,15 @@ export function clipSegment(start, end, planes) {
 export function rectanglePlanes(left, top, right, bottom) {
   return [{ a: -1, b: 0, c: -left }, { a: 1, b: 0, c: right }, { a: 0, b: -1, c: -top }, { a: 0, b: 1, c: bottom }];
 }
+
+export function lineIntersections(planes) {
+  const result = [];
+  for (let i = 0; i < planes.length; i++) for (let j = i + 1; j < planes.length; j++) {
+    const p = planes[i], q = planes[j], det = p.a * q.b - q.a * p.b;
+    if (Math.abs(det) < 1e-12) continue; // parallel or coincident boundaries
+    const x = (p.c * q.b - q.c * p.b) / det, y = (p.a * q.c - q.a * p.c) / det;
+    if (!Number.isFinite(x) || !Number.isFinite(y)) continue;
+    if (!result.some(v => Math.hypot(v.x - x, v.y - y) <= 1e-9 * Math.max(1, Math.abs(x), Math.abs(y)))) result.push({ x, y });
+  }
+  return result;
+}
