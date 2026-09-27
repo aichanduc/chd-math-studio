@@ -27,5 +27,5 @@ main{padding:16px 24px 0;max-width:1900px}.page-heading{margin-bottom:10px}.page
 /* Comparison tools and independent manual-table workspace */
 .mode-tabs{flex-wrap:wrap}.mode-tabs>button{white-space:nowrap}.typst-tag{display:none}
 .curve-row{display:grid;grid-template-columns:1fr 28px 28px;gap:6px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}.curve-formula{grid-column:1/-1;width:100%;font-family:Consolas,monospace;font-size:15px}.curve-row .check{margin:0}.curve-row button{font-size:22px}#multi-section{margin-top:14px}#add-curve{margin-top:10px}
-.paper.pannable{max-width:min(100%,calc(68vh * var(--scene-ratio,1)))}.preview-tabs{flex-wrap:wrap}.result-toolbar{height:auto;min-height:48px;padding-block:5px}
+.paper.pannable{max-width:100%}.preview-tabs{flex-wrap:wrap}.result-toolbar{height:auto;min-height:48px;padding-block:5px}
 @media(max-width:800px){.mode-tabs{display:grid;grid-template-columns:1fr 1fr}.mode-tabs>button{font-size:13px;padding:10px 5px}.paper.pannable{max-width:100%}.preview-tabs>button{font-size:12px;padding:8px}.canvas-note{line-height:1.6}}
