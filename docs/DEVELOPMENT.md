@@ -43,7 +43,7 @@ npm run preview
 
 1. **Bảng biến thiên không xác định duy nhất đồ thị.** Chức năng Phác họa dùng đường nối trơn đơn điệu từng đoạn (smoothstep). Những đầu mút vô cực được đưa về biên khung nhìn để minh họa. Nó không khôi phục công thức, độ cong hay tốc độ tiến đến tiệm cận, và không dùng làm chứng minh.
 2. Bảng tự động dùng cấu trúc biểu thức, hệ số đa thức và giải nghiệm số của đạo hàm; không tuyên bố là CAS tổng quát. Các mốc hữu hạn làm tròn đến 7 chữ số có nghĩa. Các dạng ngoài danh sách, như `sin(x)`, `x+1/x`, hàm từng đoạn, chuyển sang bảng thủ công.
-3. Đồ thị được lấy mẫu 1.500 đoạn trong miền xem. Bộ dựng cắt tại giá trị không xác định và kiểm tra bước nhảy để tránh nối qua cực. Hàm dao động rất nhanh, điểm gián đoạn hẹp hoặc hệ số cực lớn/nhỏ cần thu hẹp miền và kiểm tra lại. Tỉ lệ hai trục phụ thuộc khung nhìn, không mặc định cùng đơn vị.
+3. Đồ thị được lấy mẫu 1.500 đoạn trong miền xem. Bộ dựng cắt tại giá trị không xác định và kiểm tra bước nhảy để tránh nối qua cực. Hàm dao động rất nhanh, điểm gián đoạn hẹp hoặc hệ số cực lớn/nhỏ cần thu hẹp miền và kiểm tra lại. Hai trục dùng chung hệ số điểm ảnh/đơn vị; kích thước vùng vẽ thay đổi theo độ dài miền x và y.
 4. Mẫu số bị triệt tiêu vẫn giữ điểm khuyết với dạng phân thức bậc nhất/bậc nhất; không coi đó là tiệm cận đứng.
 5. Bảng thủ công cho phép nhãn ký hiệu tự do. Chức năng Phác họa yêu cầu x, y là biểu thức số hoặc vô cực và thứ tự/dấu phải nhất quán. Nhãn phân số/căn hợp lệ được dàn bằng MathJax SVG và Typst math; nhãn tự do vẫn in nguyên văn.
 6. SVG/PNG tải nhanh do trình duyệt dựng; tệp trong gói Actions được biên dịch **thật bằng Typst**. Hai bộ xuất có thể hơi khác về font. PDF không được giả lập bằng nút in trình duyệt.

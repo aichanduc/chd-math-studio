@@ -44,19 +44,25 @@ export function toTypst(s){
   }
   return lines.join('\n')+'\n';
 }
-export function graph(ex,table,options={}){
+export function graph(ex,table,options={},extra=[]){
   const {xmin=-5,xmax=5,ymin=-5,ymax=5,color='#2755df',showGrid=true,showPoints=true,title=''}=options;
   if(![xmin,xmax,ymin,ymax].every(Number.isFinite)||xmax<=xmin||ymax<=ymin||xmax-xmin<1e-6||ymax-ymin<1e-6||Math.max(...[xmin,xmax,ymin,ymax].map(Math.abs))>1e6)throw new Error('Khoảng trục không hợp lệ: min < max, độ rộng ≥ 10⁻⁶, giá trị trong ±10⁶.');
-  const s=scene(),L=75,R=840,T=60,B=480;
+  const sx=xmax-xmin,sy=ymax-ymin,unit=600/Math.max(sx,sy),L=75,T=65,R=L+sx*unit,B=T+sy*unit;
+  const legend=extra.length?35*(extra.length+1):0;
+  const s=scene(Math.max(360,R+65),B+60+legend);s.plot={left:L,top:T,width:R-L,height:B-T,unit};
   const X=x=>L+(x-xmin)/(xmax-xmin)*(R-L),Y=y=>B-(y-ymin)/(ymax-ymin)*(B-T);
   const ox=Math.min(R,Math.max(L,X(0))),oy=Math.min(B,Math.max(T,Y(0)));
   const step=range=>{const p=10**Math.floor(Math.log10(range/9)),n=range/9/p;return(n>5?10:n>2?5:n>1?2:1)*p;};
-  const dx=step(xmax-xmin),dy=step(ymax-ymin);
+  const dx=step(Math.max(sx,sy)),dy=dx;
   for(let x=Math.ceil(xmin/dx)*dx;x<=xmax+dx*1e-8;x+=dx){if(showGrid)line(s,X(x),T,X(x),B,grid,.8);if(Math.abs(x)>dx*1e-8){line(s,X(x),oy-3,X(x),oy+3,muted,1);text(s,X(x),Math.min(B+20,oy+20),fmt(x),13,muted);}}
   for(let y=Math.ceil(ymin/dy)*dy;y<=ymax+dy*1e-8;y+=dy){if(showGrid)line(s,L,Y(y),R,Y(y),grid,.8);if(Math.abs(y)>dy*1e-8){line(s,ox-3,Y(y),ox+3,Y(y),muted,1);text(s,Math.max(30,ox-14),Y(y),fmt(y),13,muted,'end');}}
   arrow(s,L,oy,R+12,oy,ink,1.2);arrow(s,ox,B,ox,T-12,ink,1.2);
   text(s,R+23,oy,'x',18);text(s,ox+18,T+12,'y',18);if(xmin<=0&&xmax>=0&&ymin<=0&&ymax>=0)text(s,ox-12,oy+18,'O',13,muted);
-  text(s,450,25,title||`y = ${ex.source}`,20);
+  text(s,s.width/2,25,title||(extra.length?'So sánh các hàm số':`y = ${ex.source}`),20);
+  const curves=[{ex,table,color},...extra];
+  for(const [index,curve] of curves.entries()){
+  const {ex,table,color}=curve;
+  if(extra.length){line(s,75,B+42+index*35,103,B+42+index*35,color,2.5);text(s,115,B+42+index*35,`y = ${ex.source}`,18,color,'start');}
   for(const p of table?.poles||[])if(p>xmin&&p<xmax)line(s,X(p),T,X(p),B,'#d19055',1.3,true);
   let points=[]; const flush=()=>{polyline(s,points,color,2.5);points=[];};
   const count=1500;
@@ -68,6 +74,7 @@ export function graph(ex,table,options={}){
   }flush();
   if(showPoints)for(const p of table?.points||[]){const x=numericLabel(p.x),y=ex.evaluate(x);if(p.mark==='0'&&x>xmin&&x<xmax&&y>ymin&&y<ymax){line(s,X(x),oy,X(x),Y(y),'#a6b7e9',1,true);dot(s,X(x),Y(y),4,color);text(s,X(x)+10,Y(y)-16,`(${fmt(x)}; ${fmt(y)})`,14,color,'start');}}
   for(const p of table?.holes||[])if(p.x>xmin&&p.x<xmax&&p.y>ymin&&p.y<ymax)dot(s,X(p.x),Y(p.y),5,color,true);
+  }
   return s;
 }
 export function variation(t,{color='#2755df',title='Bảng biến thiên'}={}){

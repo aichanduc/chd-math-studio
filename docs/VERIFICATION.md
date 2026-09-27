@@ -55,3 +55,10 @@ python scripts/compile.py outputs/samples/illustration.typ
 - Bố cục 390 px không tràn ngang.
 - npm audit sau bản vá phụ thuộc: 0 lỗ hổng tại thời điểm kiểm tra.
 - MathJax làm JavaScript chính tăng lên khoảng 2 MB (694 KB gzip); WASM Typst vẫn chỉ tải khi xuất PDF.
+
+
+## Bản 1.2 — 27/09/2026
+
+- 31 kiểm thử đạt: thêm nhiều hàm, ẩn hàm, giới hạn số hàm, bảng tùy chỉnh, và tỉ lệ đơn vị bằng nhau ở miền vuông/ngang/dọc.
+- Sáu mẫu Typst biên dịch thành công PDF, PNG, SVG bằng Typst 0.14.2.
+- Trình duyệt: PDF hai hàm biên dịch thành công; sửa trực tiếp ô bảng riêng, phác họa rồi trở lại bảng, đổi tab vẫn giữ giá trị tùy chỉnh.

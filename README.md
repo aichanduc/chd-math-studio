@@ -18,7 +18,13 @@ Một công thức. Những hình vẽ chỉn chu. Sẵn sàng cho bài giảng 
 
 ![Giao diện CHĐ Math Studio](docs/preview-light.jpg)
 
-## Mới trong bản 1.1
+## Mới trong bản 1.2
+
+- **Bảng biến thiên tùy chỉnh** có tab riêng, giữ bảng độc lập với bảng từ công thức. Bấm **Phác họa** cạnh **Bản xem trước** để đổi qua lại giữa bảng và đồ thị minh họa.
+- Bật **Vẽ nhiều đồ thị trên một hình**: tối đa 6 hàm, mỗi hàm có màu riêng, có thể ẩn/hiện hoặc xóa. PDF, PNG, SVG và dự án JSON giữ các hàm đang hiển thị.
+- **Ox và Oy cùng tỉ lệ đơn vị 1:1**. Miền x/y quyết định chiều dài vùng vẽ; kéo rê và thu/phóng vẫn giữ đúng tỉ lệ.
+
+## Các cải tiến giao diện
 
 - Chữ lớn, font hệ thống dễ đọc, header gọn để ưu tiên vùng vẽ.
 - Kéo rê đồ thị, cuộn thu/phóng theo con trỏ, phím mũi tên và nút ⌂ về khung ban đầu. Miền tọa độ mới được lưu và xuất đúng như đang xem.
