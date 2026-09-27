@@ -59,3 +59,10 @@ Một bảng chỉ mô tả các mốc, dấu đạo hàm, giới hạn và xu h
 - MathJax SVG chỉ nhận TeX sinh từ AST đã kiểm tra; không nhận TeX/Typst tùy ý.
 - Đồ thị vẫn lấy mẫu và cắt gián đoạn trước khi đơn giản hóa từng đường riêng với sai số tối đa 0.2 đơn vị bản vẽ.
 - Kéo rê đổi miền tọa độ, không sửa công thức hay biến đổi ảnh xuất.
+
+
+## Miền nghiệm hệ bất phương trình — 1.3
+
+Đối chiếu tài liệu chính thức [line](https://typst.app/docs/reference/visualize/line/), [stroke](https://typst.app/docs/reference/visualize/stroke/), [polygon](https://typst.app/docs/reference/visualize/polygon/) và [tiling](https://typst.app/docs/reference/visualize/tiling/). Typst hỗ trợ nét đứt và tô họa tiết trên đa giác. Dự án chọn cắt các đoạn gạch theo nửa mặt phẳng rồi xuất bằng `line`: cùng một mô hình vector phục vụ SVG, PNG và Typst 0.14.2, không cần tải package ngoài.
+
+AST được giới hạn trong phép toán affine, rút gọn mỗi dòng về `ax + by <= c`; không suy luận tuyến tính bằng lấy mẫu điểm. Phần loại của mỗi BPT được gạch theo màu riêng. Reverse cắt từng nét gạch đồng thời theo mọi điều kiện đang bật, tức là gạch giao các miền, không đảo từng BPT riêng rẽ. Biên nghiêm ngặt dùng nét đứt; tính diện tích gạch dùng bao đóng vì độ dày nét không thể biểu diễn loại bỏ một đường có diện tích bằng không. Trường hợp miền chung chỉ là đường/điểm cần đọc kèm các điều kiện và đường biên.

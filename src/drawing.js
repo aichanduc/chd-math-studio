@@ -77,10 +77,10 @@ export function graph(ex,table,options={},extra=[]){
   }
   return s;
 }
-export function variation(t,{color='#2755df',title='Bảng biến thiên'}={}){
+export function variation(t,{color='#2755df',title=''}={}){
   validateTable(t);const n=t.points.length,width=Math.max(900,220+(n-1)*180),s=scene(width,370),left=55,sep=120,right=width-50,top=75,bottom=325;
   s.table=structuredClone(t);s.tableOptions={color,title};s.hits=[];
-  text(s,width/2,30,title||'Bảng biến thiên',21);const X=i=>165+i*((width-260)/(n-1));
+  if(title.trim())text(s,width/2,30,title,21);const X=i=>165+i*((width-260)/(n-1));
   line(s,left,125,right,125);line(s,left,178,right,178);line(s,sep,top,sep,bottom);
   text(s,86,100,'x',22);text(s,86,152,'y′',22);text(s,86,248,'y',22);
   const values=t.points.flatMap(p=>[numericLabel(p.y),numericLabel(rightValue(p))]).filter(Number.isFinite),lo=Math.min(...values),hi=Math.max(...values);

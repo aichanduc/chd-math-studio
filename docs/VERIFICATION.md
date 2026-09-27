@@ -62,3 +62,10 @@ python scripts/compile.py outputs/samples/illustration.typ
 - 31 kiểm thử đạt: thêm nhiều hàm, ẩn hàm, giới hạn số hàm, bảng tùy chỉnh, và tỉ lệ đơn vị bằng nhau ở miền vuông/ngang/dọc.
 - Sáu mẫu Typst biên dịch thành công PDF, PNG, SVG bằng Typst 0.14.2.
 - Trình duyệt: PDF hai hàm biên dịch thành công; sửa trực tiếp ô bảng riêng, phác họa rồi trở lại bảng, đổi tab vẫn giữ giá trị tùy chỉnh.
+
+
+## Bản 1.3 — 27/09/2026
+
+- 38 kiểm thử đạt, gồm phân tích bất phương trình affine, loại biểu thức phi tuyến, cắt đoạn theo nửa mặt phẳng, kiểm tra vị trí mọi nét gạch thường/Reverse, biên nghiêm ngặt, dòng bị tắt, miền rỗng và tiêu đề trống ở cả hai kiểu bảng.
+- Bổ sung 2 mẫu hệ BPT vào quy trình CI (tổng 8 mẫu). Mẫu thường và Reverse biên dịch cục bộ thành PDF, PNG, SVG bằng Typst 0.14.2; PDF Reverse cũng đã biên dịch thành công trên trình duyệt.
+- Kiểm tra giao diện: thêm/xóa/bật/tắt BPT, báo lỗi phi tuyến, thanh kích thước giữ nguyên miền tọa độ; nhập/xóa tiêu đề cập nhật ngay trong tab bảng tùy chỉnh.

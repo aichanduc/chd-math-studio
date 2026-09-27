@@ -18,7 +18,22 @@ Một công thức. Những hình vẽ chỉn chu. Sẵn sàng cho bài giảng 
 
 ![Giao diện CHĐ Math Studio](docs/preview-light.jpg)
 
-## Mới trong bản 1.2
+## Mới trong bản 1.3
+
+- **Miền nghiệm hệ BPT**: nhập từ 1 đến 8 bất phương trình bậc nhất hai ẩn, chọn màu và bật/tắt từng dòng. Vùng trắng là miền nghiệm chung; **Reverse** chuyển sang gạch miền chung. Đường biên `<`, `>` dùng nét đứt; `≤`, `≥` dùng nét liền.
+- **Kích thước khung**: kéo thanh trượt để xem nhỏ gọn hoặc rộng hơn; bấm **Vừa màn hình** để trở về mức mặc định. Việc này không đổi miền tọa độ, tỉ lệ đơn vị hay tệp xuất.
+- Bảng biến thiên để trống **Tiêu đề hình** sẽ không có tiêu đề trên bản xem trước và trong PDF/PNG/SVG/Typst.
+
+### Vẽ miền nghiệm trong một phút
+
+1. Mở **Miền nghiệm hệ BPT**, nhập `x >= 0`, `y >= 0`, `x + y <= 4` ở ba dòng.
+2. Phần tam giác trắng là miền nghiệm chung. Bỏ chọn một dòng để xem tác động của bất phương trình đó; bấm **Reverse · Đảo vùng gạch** để gạch miền nghiệm thay vì phần loại.
+3. Điều chỉnh miền x/y trong **Tùy chỉnh trình bày**, hoặc rê/thu phóng ngay trên hình. Hai trục luôn cùng đơn vị.
+4. Tải PDF, PNG, SVG hoặc mã Typst; **Lưu dự án** giữ toàn bộ các dòng, màu và trạng thái Reverse.
+
+Hỗ trợ số thập phân, phân số, ngoặc và biểu thức ở hai vế: `2(x + y) - y <= 4`, `x/2 + y > 1`. Chỉ nhận biểu thức bậc nhất; mỗi dòng một dấu so sánh. Hình chỉ thể hiện phần miền trong khung đang xem. Khi không bật dòng nào, toàn bộ mặt phẳng là nghiệm; Reverse gạch toàn bộ khung.
+
+## Các tính năng từ bản 1.2
 
 - **Bảng biến thiên tùy chỉnh** có tab riêng, giữ bảng độc lập với bảng từ công thức. Bấm **Phác họa** cạnh **Bản xem trước** để đổi qua lại giữa bảng và đồ thị minh họa.
 - Bật **Vẽ nhiều đồ thị trên một hình**: tối đa 6 hàm, mỗi hàm có màu riêng, có thể ẩn/hiện hoặc xóa. PDF, PNG, SVG và dự án JSON giữ các hàm đang hiển thị.

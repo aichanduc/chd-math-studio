@@ -1,3 +1,4 @@
+import { parseInequality } from './inequality-math.js';
 import { expression } from './math.js';
 import { mathjax } from 'mathjax-full/js/mathjax.js';
 import { TeX } from 'mathjax-full/js/input/tex.js';
@@ -24,6 +25,7 @@ export function mathLabel(source){
  try{
   const s=key.trim().replace(/−/g,'-');
   if(/^[+-]?(∞|oo|infinity)$/.test(s)){const sign=s.startsWith('-')?'-':s.startsWith('+')?'+':'';tex=sign+'\\infty';code=sign+'oo';}
+  else if(/[<>≤≥]/.test(s)){const p=parseInequality(s);tex=p.left.toTex()+({'<=':'\\leq','>=':'\\geq','<':'<','>':'>'}[p.operator])+' '+p.right.toTex();code=typ(p.left)+' '+p.operator+' '+typ(p.right);}
   else if(s==='y′'||s==="y'"){tex="y'";code="y'";}
   else if(['x','y','+','-','0'].includes(s)){tex=s;code=s;}
   else {const eq=/^y\s*=/.test(s),ex=expression(s,false);tex=(eq?'y=':'')+ex.ast.toTex();code=(eq?'y = ':'')+typ(ex.ast);}

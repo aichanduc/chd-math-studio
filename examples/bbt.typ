@@ -22,8 +22,8 @@
 #let bbt(xs: (), marks: (), ys: (), signs: ()) = {
   let n = xs.len()
   let x(i) = 165 + i*(900 - 260)/(n - 1)
-  for y in (75, 125, 178, 325) { segment(55, y, 850, y) }
-  for v in (55, 120, 850) { segment(v, 75, v, 325) }
+  for y in (125, 178) { segment(55, y, 850, y) }
+  segment(120, 75, 120, 325)
   at(86, 100, $x$); at(86, 152, $y'$); at(86, 248, $y$)
   for i in range(n) {
     at(x(i), 100, xs.at(i))
@@ -44,7 +44,7 @@
     }
   }
 }
-#at(450, 30, text("Bảng biến thiên"), w: 840)
+
 
 // Hàng x, y′, y và dấu trên từng khoảng:
 #bbt(

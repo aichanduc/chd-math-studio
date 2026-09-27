@@ -1,6 +1,6 @@
 import { typstLabel } from './math-typeset.js';
 import { numericLabel, rightValue } from './math.js';
-export function variationTypst(t,{color='#2755df',title='Bảng biến thiên'}={},width=900){
+export function variationTypst(t,{color='#2755df',title=''}={},width=900){
  const nums=t.points.flatMap(p=>[numericLabel(p.y),numericLabel(rightValue(p))]).filter(Number.isFinite),lo=Math.min(...nums),hi=Math.max(...nums);
  const level=v=>{const n=numericLabel(v);return n===Infinity?204:n===-Infinity?303:Number.isFinite(n)?hi===lo?253:284-(n-lo)/(hi-lo)*62:253;};
  const tuple=a=>'('+a.join(', ')+',)';
@@ -50,7 +50,7 @@ export function variationTypst(t,{color='#2755df',title='Bảng biến thiên'}=
     }
   }
 }
-#at(${width/2}, 30, text(${JSON.stringify(title||'Bảng biến thiên')}), w: ${width-60})
+${title.trim()?`#at(${width/2}, 30, text(${JSON.stringify(title)}), w: ${width-60})`:""}
 
 // Hàng x, y′, y và dấu trên từng khoảng:
 #bbt(

@@ -1,3 +1,4 @@
+import { initialInequalities } from '../src/inequalities.js';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { expression,autoVariation } from '../src/math.js';
 import { initialTable,initialTree,buildScene } from '../src/project.js';
@@ -13,4 +14,14 @@ for(const [name,mode,formula] of [['cubic','graph','x^3-3*x+1'],['variation','va
  await writeFile(`outputs/samples/${name}.typ`,toTypst(s));
  await writeFile(`outputs/samples/${name}.svg`,toSVG(s));
 }
-console.log('Six sample projects and native Typst sources generated.');
+for(const reverse of [false,true]){
+ const name=reverse?'inequalities-reverse':'inequalities';
+ const p={version:1,mode:'inequalities',inequalities:initialInequalities(),reverse,options};
+ p.inequalities[2].formula='x + y < 4';
+ const s=buildScene(p);
+ await writeFile(`examples/${name}.json`,JSON.stringify(p,null,2));
+ await writeFile(`outputs/samples/${name}.typ`,toTypst(s));
+ await writeFile(`outputs/samples/${name}.svg`,toSVG(s));
+}
+await writeFile('examples/bbt.typ',toTypst(buildScene({version:1,mode:'variation',table:initialTable(),options})));
+console.log('Eight sample projects and native Typst sources generated.');
